@@ -37,6 +37,7 @@ public class PlayerMover : MonoBehaviour {
 
     IEnumerator CoroutineMove(int diceValue, float speed)
     {
+        yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < diceValue; i++)
         {
             WaypointIndex++;
@@ -51,6 +52,8 @@ public class PlayerMover : MonoBehaviour {
                 transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
                 yield return new WaitForEndOfFrame();
             }
+
+            yield return new WaitForSeconds(0.4f);
         }
 
         PlayerMoved(this, diceValue);

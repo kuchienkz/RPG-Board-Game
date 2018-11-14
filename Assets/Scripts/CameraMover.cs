@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMover : MonoBehaviour {
+public class CameraMover : MonoBehaviour
+{
+    public delegate void CameraMovedToPlayerHandler(object sender);
+    public event CameraMovedToPlayerHandler CameraMovedToPlayer;
 
     private GameObject Player;
 	private bool IsPlayerMoving = false;
@@ -45,10 +48,12 @@ public class CameraMover : MonoBehaviour {
 
         while (transform.position != destination)
         {
-            transform.position = Vector3.MoveTowards(transform.position, destination, speed*5 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, destination, speed * 5 * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
 
         IsPlayerMoving = true;
+
+        CameraMovedToPlayer(this);
     }
 }

@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
     public static GameController instance;
 
     [SerializeField]
-    public static int PlayerMoveSpeedMultiplier = 10;
+    public static int PlayerMoveSpeedMultiplier = 5;
 
     [SerializeField]
     public GameObject PlayerFolder;
@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     GameObject Camera;
 
+    private bool AllowRoll = false;
     private CameraMover CameraMover;
     private List<GameObject> Players;
     private int PlayerIndex = -1;
@@ -45,6 +46,8 @@ public class GameController : MonoBehaviour {
         }
 
         CameraMover = Camera.GetComponent<CameraMover>();
+        CameraMover.CameraMovedToPlayer += CameraMover_CameraMovedToPlayer;
+        Camera.transform.position = Players[0].transform.position;
         DiceController.DicesRolled += DiceController_DicesRolled;
 
         NextPlayerTurn();
@@ -65,11 +68,21 @@ public class GameController : MonoBehaviour {
         }
 
         CameraMover.SetPlayer(Players[PlayerIndex]);
+
+    }
+
+    private void CameraMover_CameraMovedToPlayer(object sender)
+    {
+        AllowRoll = true;
     }
 
     public void RollDice()
     {
-        DiceController.Roll();
+        if (AllowRoll)
+        {
+            DiceController.Roll();
+            AllowRoll = false;
+        }
     }
 
     private void DiceController_DicesRolled(object sender, int firstDiceValue, int secondDiceValue)
