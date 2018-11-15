@@ -62,9 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraMover.cs" />
+    <Compile Include="Assets\Scripts\CardClass.cs" />
     <Compile Include="Assets\Scripts\DicesController.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
-    <Compile Include="Assets\Scripts\ItemClass.cs" />
     <Compile Include="Assets\Scripts\JobClass.cs" />
     <Compile Include="Assets\Scripts\PlayerClass.cs" />
     <Compile Include="Assets\Scripts\PlayerMover.cs" />
