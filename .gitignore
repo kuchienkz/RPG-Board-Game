@@ -1,2 +1,7 @@
-
-.vs
+.vs/
+Temp/
+obj/
+Library/EditorInstance.json
+Library/metadata/
+Library/ShaderChache/
+*.dll
