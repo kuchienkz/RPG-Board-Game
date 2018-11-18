@@ -8,3 +8,4 @@ Library/
 *.mdb
 *.log
 *.cache
+*.csproj
