@@ -1,7 +1,7 @@
-.vs/
-Temp/
-obj/
-Library/
+/.vs
+/Temp
+/obj
+/Library
 *.dll
 *.dwlt
 *.info
